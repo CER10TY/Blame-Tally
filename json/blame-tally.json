@@ -1,1 +1,31 @@
-{"Liste_1":{"type":"single","data":20},"Liste_2":{"type":"topic","data":{"Topic_1":1,"Topic_2":0}},"Liste_3":{"type":"user","data":{"User_ID":3},"Liste_4":{"type":"multi","data":{"topic_1":{"User_ID":0},"topic_2":{"User_ID":0}}}}}
+{
+    "Liste_1": {
+        "type": "single",
+        "data": 20
+    },
+    "Liste_2": {
+        "type": "single",
+        "data": 4000
+    },
+    "Liste_3": {
+        "type": "user",
+        "data": {
+            "User_ID": 3
+        }
+    },
+    "Liste_4": {
+        "type": "multi",
+        "data": {
+            "topic_1": {
+                "User_ID": 0
+            },
+            "topic_2": {
+                "User_ID": 0
+            }
+        }
+    },
+    "Liste_22": {
+        "type": "single",
+        "data": 4000
+    }
+}
