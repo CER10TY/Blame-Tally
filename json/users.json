@@ -1,0 +1,12 @@
+{
+    "John": {
+        "user_id": 0,
+        "name": "John",
+        "age": 20
+    },
+    "Doe": {
+        "user_id": 1,
+        "name": "Doe",
+        "age": 40
+    }
+}
