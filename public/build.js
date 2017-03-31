@@ -11268,13 +11268,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted() {
         __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.get("/api/1/list").then(response => {
+            console.log(response);
             this.tallies = response.body;
+            console.log(this.tallies);
         }, response => {
             console.log("Error in GET", response);
         });
@@ -11282,7 +11287,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data() {
         return {
             tallies: this.tallies,
-            pInfo: this.tally,
             selected: []
         };
     }
@@ -11357,7 +11361,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('section', {
     staticClass: "max-h max-w v-center"
   }, [_c('div', {
-    staticClass: "h-center"
+    staticClass: "h-center",
+    staticStyle: {
+      "border": "5px solid black"
+    }
   }, [_c('router-view')], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -11375,7 +11382,9 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "container-fluid"
-  }, [_c('h3', [_vm._v("Tally View")]), _vm._v(" "), _c('p', [_vm._v(" " + _vm._s(_vm.selected) + " ")]), _vm._v(" "), _c('select', {
+  }, [_c('h3', [_vm._v("Tally View")]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('p', [_vm._v(" " + _vm._s(_vm.selected[1]) + " ")]), _vm._v(" "), _c('p', [_vm._v(" " + _vm._s(_vm.selected[0]))])]), _vm._v(" "), _c('select', {
     directives: [{
       name: "model",
       rawName: "v-model.lazy",
@@ -11386,8 +11395,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }],
     attrs: {
-      "id": "tallyList",
-      "multiple": ""
+      "id": "tallyList"
     },
     on: {
       "change": function($event) {
@@ -11403,7 +11411,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.tallies), function(tally, index) {
     return _c('option', {
       domProps: {
-        "value": index
+        "value": [tally, index]
       }
     }, [_vm._v("\n            " + _vm._s(index) + "\n        ")])
   }))])
