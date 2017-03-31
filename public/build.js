@@ -11245,8 +11245,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -11258,6 +11256,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -11278,7 +11281,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data() {
         return {
-            tallies: this.tallies
+            tallies: this.tallies,
+            pInfo: this.tally,
+            selected: []
         };
     }
 });
@@ -11353,12 +11358,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "max-h max-w v-center"
   }, [_c('div', {
     staticClass: "h-center"
-  }, [_c('form', {
-    attrs: {
-      "action": "",
-      "method": "POST"
-    }
-  }, [_c('router-view')], 1)])])
+  }, [_c('router-view')], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -11373,12 +11373,41 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "container"
-  }, [_c('h3', [_vm._v("Tally View")])])
-}]}
+    staticClass: "container-fluid"
+  }, [_c('h3', [_vm._v("Tally View")]), _vm._v(" "), _c('p', [_vm._v(" " + _vm._s(_vm.selected) + " ")]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model.lazy",
+      value: (_vm.selected),
+      expression: "selected",
+      modifiers: {
+        "lazy": true
+      }
+    }],
+    attrs: {
+      "id": "tallyList",
+      "multiple": ""
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.selected = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, _vm._l((_vm.tallies), function(tally, index) {
+    return _c('option', {
+      domProps: {
+        "value": index
+      }
+    }, [_vm._v("\n            " + _vm._s(index) + "\n        ")])
+  }))])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

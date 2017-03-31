@@ -1,7 +1,12 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <h3>Tally View</h3>
-        
+        <p> {{ selected }} </p>
+        <select id="tallyList" v-model.lazy="selected" multiple>
+            <option v-for="(tally, index) in tallies" v-bind:value="index">
+                {{ index }}
+            </option>
+        </select>
     </div>
 </template>
 
@@ -14,11 +19,13 @@
                    this.tallies = response.body;
                }, (response) => {
                    console.log("Error in GET", response);
-               })
+               });
         },
-       data () {
+        data () {
            return {
-               tallies: this.tallies
+               tallies: this.tallies,
+               pInfo: this.tally,
+               selected: []
            }
        }
     }

@@ -1,9 +1,7 @@
 <template>
     <section class="max-h max-w v-center">
         <div class="h-center">
-            <form action="" method="POST">
-                <router-view></router-view>
-            </form>
+            <router-view></router-view>
         </div>
     </section>
 </template>
