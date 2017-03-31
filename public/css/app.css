@@ -1,0 +1,18 @@
+.max-h {
+    height: 97vh;
+}
+
+.max-w {
+    width: 97vw;
+    margin: 0 auto;
+}
+
+.v-center {
+    display: flex;
+    justify-content: center;
+}
+
+.h-center {
+    text-align: center;
+    align-self: center;
+}

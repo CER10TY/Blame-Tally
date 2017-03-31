@@ -9392,7 +9392,7 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(14)))
 
 /***/ }),
 /* 1 */
@@ -9644,9 +9644,9 @@ module.exports = function normalizeComponent (
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_pages_dashboard_vue__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_pages_dashboard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__src_pages_dashboard_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_pages_tally_view_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_pages_tally_view_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__src_pages_tally_view_vue__);
 
 
 
@@ -9654,7 +9654,7 @@ module.exports = function normalizeComponent (
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
-const routes = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_2__src_pages_dashboard_vue___default.a, name: "Dashboard" }];
+const routes = [{ path: "/", component: __WEBPACK_IMPORTED_MODULE_2__src_pages_tally_view_vue___default.a, name: "Tallies" }];
 
 const router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes
@@ -9670,7 +9670,7 @@ var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(6),
   /* template */
-  __webpack_require__(10),
+  __webpack_require__(11),
   /* scopeId */
   null,
   /* cssModules */
@@ -10778,7 +10778,7 @@ var xhrClient = function (request) {
 
 var nodeClient = function (request) {
 
-    var client = __webpack_require__(14);
+    var client = __webpack_require__(15);
 
     return new PromiseObj(function (resolve) {
 
@@ -11243,6 +11243,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -11252,6 +11256,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 //
 //
 //
@@ -11260,7 +11266,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted() {
+        __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.get("/api/1/list").then(response => {
+            this.tallies = response.body;
+        }, response => {
+            console.log("Error in GET", response);
+        });
+    },
+    data() {
+        return {
+            tallies: this.tallies
+        };
+    }
+});
 
 /***/ }),
 /* 8 */
@@ -11289,22 +11310,23 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 }).$mount("#app");
 
 /***/ }),
-/* 9 */
+/* 9 */,
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(7),
   /* template */
-  __webpack_require__(11),
+  __webpack_require__(12),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/home/sjohanson/blame-tally/src/pages/dashboard.vue"
+Component.options.__file = "/home/sjohanson/blame-tally/src/pages/tally_view.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] dashboard.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] tally_view.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -11313,9 +11335,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f2b17ff", Component.options)
+    hotAPI.createRecord("data-v-6f1771bd", Component.options)
   } else {
-    hotAPI.reload("data-v-0f2b17ff", Component.options)
+    hotAPI.reload("data-v-6f1771bd", Component.options)
   }
 })()}
 
@@ -11323,11 +11345,20 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('router-view')], 1)
+  return _c('section', {
+    staticClass: "max-h max-w v-center"
+  }, [_c('div', {
+    staticClass: "h-center"
+  }, [_c('form', {
+    attrs: {
+      "action": "",
+      "method": "POST"
+    }
+  }, [_c('router-view')], 1)])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -11338,24 +11369,26 @@ if (false) {
 }
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h1', [_vm._v("Blame Tally")]), _vm._v(" "), _c('p', [_vm._v("This is the Tally")])])
+  return _c('div', {
+    staticClass: "container"
+  }, [_c('h3', [_vm._v("Tally View")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0f2b17ff", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-6f1771bd", module.exports)
   }
 }
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13644,7 +13677,7 @@ if (inBrowser && window.Vue) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 var g;
@@ -13671,7 +13704,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
