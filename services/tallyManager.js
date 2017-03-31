@@ -26,7 +26,7 @@ class TallyManager {
     // Adds new tally specified as JSON object
     addTally(list) {
         // Gets name of list (not key-value pair) and checks if it exists in blame-tally.json
-        if(typeof this.data[Object.keys(list)[0]] !== "undefined"){
+        if (typeof this.data[Object.keys(list)[0]] !== "undefined"){
             throw err;
         };
         // If list undefined, assign to blame-tally.json and update file.
