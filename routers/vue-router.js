@@ -1,12 +1,14 @@
-import vue from "vue"
+import Vue from "vue"
 import VueRouter from "vue-router"
 
-import Tallies from "../src/pages/tally_view.vue"
+import TallyView from "../src/pages/starter.vue"
+import About from "../src/pages/about.vue"
 
-vue.use(VueRouter);
+Vue.use(VueRouter);
 
 const routes = [
-    {path: "/", component: Tallies, name: "Tallies"}
+    {path: "/", component: TallyView, name: "TallyView"},
+    {path: "/about", component: About, name: "About"}
 ];
 
 const router = new VueRouter({

@@ -3,12 +3,23 @@
     <head>
         <title>Tally Management System</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="css/app.css">
+
+        <!-- Stylesheets, Fonts -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+
+        <script src="https://use.fontawesome.com/434f355bcd.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+
     </head>
     <body>
         <div id="app">
-            <app></app>
+            <navbar></navbar>
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
+            <footernav></footernav>
         </div>
     <script src="build.js"></script>
     </body>

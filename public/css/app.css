@@ -1,18 +1,80 @@
-.max-h {
-    height: 97vh;
+html, body {
+	background: #333F48;
+	color: #fff;
+	overflow: hidden;
 }
 
-.max-w {
-    width: 97vw;
-    margin: 0 auto;
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Bungee", cursive;
+	color: #97D700;
+	margin: 0 auto;
 }
 
-.v-center {
-    display: flex;
-    justify-content: center;
+li.nav-item > a.nav-link {
+	color: #fff;
+	transition: all .33s ease;
 }
 
-.h-center {
-    text-align: center;
-    align-self: center;
+li.nav-item > a.nav-link:hover {
+	box-shadow: 0 -50px #97D700 inset;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+li:before {
+	content: "*";
+	padding-right: 5px;
+	color: #97D700;
+}
+
+li {
+	padding-left: 16px;
+}
+
+a {
+	text-decoration: none !important;
+	color: #97D700;
+}
+
+a:hover, a:active, a:visited {
+	color: #fff;
+}
+
+a.active > i {
+	color: #97D700;
+}
+
+a:hover .fa {
+	color: #97D700;
+}
+
+.footer {
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.seperator {
+	height: 2px;
+	width: 250px;
+	background-color: #fff;
+}
+
+.fa {
+	color: #fff;
+	margin: 0 auto;
+	transition: color .5s ease;
+	margin-left: 5px;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: all .25s;
+}
+
+.fade-enter, .fade-leave-active {
+    opacity: 0;
 }

@@ -1,6 +1,7 @@
 let fs = require("fs");
 
 class UserManager {
+    
     constructor(data) {
         this.data = require(data); // users.json, file path specified in userRouter.js
         this.path = data; // actual file path to users.json, for fs
@@ -21,7 +22,7 @@ class UserManager {
     createUser(user) {
         // Get available user ID by iterating through all user IDs
         let userId = 0;
-        for (var id in this.data) {
+        for (let id in this.data) {
             userId++;
         }
         userId = userId.toString();
@@ -45,4 +46,4 @@ class UserManager {
     }
 }
 
-module.exports   = UserManager;
+module.exports = UserManager;
