@@ -1,3 +1,13 @@
+/*
+	COLOR SCHEME
+	|--
+	#97D700 - Sector Green
+	#333F48 - Sector Grey
+	#fff - White
+*/
+
+/* TAG MODIFIERS */
+
 html, body {
 	background: #333F48;
 	color: #fff;
@@ -52,6 +62,15 @@ a:hover .fa {
 	color: #97D700;
 }
 
+a > .fa {
+	color: #fff;
+	margin: 0 auto;
+	transition: color .5s ease;
+	margin-left: 5px;
+}
+
+/* CLASSES */
+
 .footer {
 	position: fixed;
     bottom: 0;
@@ -64,13 +83,6 @@ a:hover .fa {
 	background-color: #fff;
 }
 
-.fa {
-	color: #fff;
-	margin: 0 auto;
-	transition: color .5s ease;
-	margin-left: 5px;
-}
-
 .fade-enter-active, .fade-leave-active {
     transition: all .25s;
 }
@@ -78,3 +90,16 @@ a:hover .fa {
 .fade-enter, .fade-leave-active {
     opacity: 0;
 }
+
+.code {
+	background: #47525a;
+	margin-left: 5px;
+}
+
+/* IDs */
+
+/* MEDIA QUERIES */
+
+/* BOOTSTRAP MODIFIERS */
+
+/* VUE.JS MODIFIERS */

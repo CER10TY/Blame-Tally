@@ -1,26 +1,13 @@
 <template>
-	<div class="row">
-		<div class="container col-sm-5 mt-4 ml-4" align="left">
+	<div align="center">
+		<div class="container col-sm-5 mt-1">
 			<h4>Hello there!</h4>
-			<p>As you've no doubt already been on the landing page of this tool, you probably already know what this is about. This nifty little tool is an <strong>offline</strong> Tally Management tool, effectively allowing you to manage your Blame Tallies (or any other kind of Tally) with handy JSON files and a neat GUI.</p>
-			<h5>What are Blame Tallies?</h5>
-			<p><a href="https://en.wikipedia.org/wiki/Tally_marks" alt="Wiki Article">This</a> is an article about Tally Marks on Wikipedia. That should explain things pretty well. You're a developer anyway, you should know this stuff.</p>
+			<p>As you've no doubt already been on the landing page, you should have a slight idea of what this is about. The Blame Tally Management System (BTMS for short, although nobody says that) allows you, as a developer, to manage all sorts of (Blame) Tallies in a digital fashion (welcome to <em>2017</em>). The BTMS is built to be hosted LAN only.<p>
 			<h5>How do I use this tool?</h5>
-			<p>It's pretty straight forward. I mean, look at the GUI. I didn't even make the usual mess, so you should really be able to figure this stuff out on your own.</p>
-			<p>If you're too lazy to do that, here's a rundown:
-				<ul>
-					<li>Add a Tally, selecting the type and other content as specified</li>
-					<li>Modify the Tally by clicking the right button. A new window opens up.</li>
-					<li>Remove the Tally altogether because you're unhappy. Contemplate life.</li>
-				</ul>
-			Alternatively, you can easily modify all Tallies as well as Users in the respective JSON files stored in the back end.</p>	
-		</div>
-		<div class="container col-sm-5 mt-4 mr-4" align="right">
-			<h5>What is this written in?</h5>
-			<p>The front-end is written entirely (well, almost) with Vue.js, using multiple components wherever possible. This allows for completely modular development, switching out stuff as needed, as well as making my life a thousand times easier if something happens to break.</p>
-			<p>The back-end is written in NodeJS, and I use JSON for storage. The reason I use JSON for storage (and not a big, clunky database) is because it's not a big, clunky database, this tool is offline, and using a big, clunky database is a pain. Only drawback is, now everybody can easily modify their tallies if they're smart enough.</p>
-			<h5>Missed anything?</h5>
-			<p>The usual stuff: If you want to change something, you can fork the repository and edit things to your heart's content. If you feel like screaming at me, shoot me an e-mail. Also, connect with me on LinkedIn. I heard that's <em>super important</em> in today's age. Other than that, have fun and blame your friends for everything.</p>
+			<p>Usage is fairly straight forward via the GUI provided by the tool. You can add, remove or otherwise modify Tallies or Users depending on your preference. You may add or remove Users from Tallies as needed, as well as keep individual Tallies (called "Topics" in the back-end) on every User.</p>
+			<p>In addition to using the front-end made available to you, you can edit the Tallies and/or Users directly in the stored JSON files. These can be found in <i class="fa fa-file-code-o"></i><span class="code">(root)/json/blame-tally.json</span> and <i class="fa fa-file-code-o"></i><span class="code">(root)/json/users.json</span> respectively.</p>
+			<h5>How do I change things?</h5>
+			<p>Changing things is also fairly easy. Fork the repo (link below), make your changes, build, host, and you're good to go. This tool uses Vue.js (with VueRouter and VueX) for the front-end, along with NodeJS and JSON (as storage) for the back-end. Webpack is (of course) used to build the front-end.</p>
 		</div>
 	</div>
 </template>

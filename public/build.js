@@ -63,11 +63,68 @@
 /******/ 	__webpack_require__.p = "./public/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  scopeId,
+  cssModules
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  // inject cssModules
+  if (cssModules) {
+    var computed = Object.create(options.computed || null)
+    Object.keys(cssModules).forEach(function (key) {
+      var module = cssModules[key]
+      computed[key] = function () { return module }
+    })
+    options.computed = computed
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9392,10 +9449,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(10)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(19)))
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -9581,16 +9638,16 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_pages_starter_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_pages_starter_vue__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_pages_starter_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__src_pages_starter_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_pages_about_vue__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_pages_about_vue__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_pages_about_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__src_pages_about_vue__);
 
 
@@ -9609,7 +9666,75 @@ const router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 /* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
-/* 3 */
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(7),
+  /* template */
+  __webpack_require__(14),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/sj/git/Blame-Tally/src/components/footer.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] footer.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6130b12c", Component.options)
+  } else {
+    hotAPI.reload("data-v-6130b12c", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(8),
+  /* template */
+  __webpack_require__(16),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/sj/git/Blame-Tally/src/components/navbar.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] navbar.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6e19cb5f", Component.options)
+  } else {
+    hotAPI.reload("data-v-6e19cb5f", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10690,7 +10815,7 @@ var xhrClient = function (request) {
 
 var nodeClient = function (request) {
 
-    var client = __webpack_require__(11);
+    var client = __webpack_require__(20);
 
     return new PromiseObj(function (resolve) {
 
@@ -11144,7 +11269,64 @@ module.exports = plugin;
 
 
 /***/ }),
-/* 4 */
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11161,19 +11343,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 5 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_resource__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_resource__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_resource___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_resource__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routers_vue_router_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_components_footer_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routers_vue_router_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_components_footer_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_components_footer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__src_components_footer_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_components_navbar_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_components_navbar_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_components_navbar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__src_components_navbar_vue__);
 
 
@@ -11191,14 +11373,48 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 }).$mount("#app");
 
 /***/ }),
-/* 6 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(7)(
+var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(4),
+  __webpack_require__(9),
   /* template */
-  __webpack_require__(8),
+  __webpack_require__(15),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/sj/git/Blame-Tally/src/pages/about.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] about.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6bdce5b8", Component.options)
+  } else {
+    hotAPI.reload("data-v-6bdce5b8", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(10),
+  /* template */
+  __webpack_require__(17),
   /* scopeId */
   null,
   /* cssModules */
@@ -11225,64 +11441,124 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports) {
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// this module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  scopeId,
-  cssModules
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  // inject cssModules
-  if (cssModules) {
-    var computed = Object.create(options.computed || null)
-    Object.keys(cssModules).forEach(function (key) {
-      var module = cssModules[key]
-      computed[key] = function () { return module }
-    })
-    options.computed = computed
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('footer', {
+    staticClass: "footer",
+    attrs: {
+      "align": "center"
+    }
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/about",
+      "title": "About this tool",
+      "alt": "About",
+      "activeClass": "active"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-info-circle fa-2x"
+  })])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    attrs: {
+      "href": "#",
+      "title": "View the repository on Github",
+      "alt": "GitHub Repository Link"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-github fa-2x"
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    attrs: {
+      "href": "#",
+      "title": "Connect with the author",
+      "alt": "Connect author"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-linkedin-square fa-2x"
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    attrs: {
+      "href": "#",
+      "title": "Contact the author",
+      "alt": "Contact author"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-envelope-square fa-2x"
+  })])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6130b12c", module.exports)
   }
 }
 
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "align": "center"
+    }
+  }, [_c('div', {
+    staticClass: "container col-sm-5 mt-1"
+  }, [_c('h4', [_vm._v("Hello there!")]), _vm._v(" "), _c('p', [_vm._v("As you've no doubt already been on the landing page, you should have a slight idea of what this is about. The Blame Tally Management System (BTMS for short, although nobody says that) allows you, as a developer, to manage all sorts of (Blame) Tallies in a digital fashion (welcome to "), _c('em', [_vm._v("2017")]), _vm._v("). The BTMS is built to be hosted LAN only.")]), _c('p'), _c('h5', [_vm._v("How do I use this tool?")]), _vm._v(" "), _c('p', [_vm._v("Usage is fairly straight forward via the GUI provided by the tool. You can add, remove or otherwise modify Tallies or Users depending on your preference. You may add or remove Users from Tallies as needed, as well as keep individual Tallies (called \"Topics\" in the back-end) on every User.")]), _vm._v(" "), _c('p', [_vm._v("In addition to using the front-end made available to you, you can edit the Tallies and/or Users directly in the stored JSON files. These can be found in "), _c('i', {
+    staticClass: "fa fa-file-code-o"
+  }), _c('span', {
+    staticClass: "code"
+  }, [_vm._v("(root)/json/blame-tally.json")]), _vm._v(" and "), _c('i', {
+    staticClass: "fa fa-file-code-o"
+  }), _c('span', {
+    staticClass: "code"
+  }, [_vm._v("(root)/json/users.json")]), _vm._v(" respectively.")]), _vm._v(" "), _c('h5', [_vm._v("How do I change things?")]), _vm._v(" "), _c('p', [_vm._v("Changing things is also fairly easy. Fork the repo (link below), make your changes, build, host, and you're good to go. This tool uses Vue.js (with VueRouter and VueX) for the front-end, along with NodeJS and JSON (as storage) for the back-end. Webpack is (of course) used to build the front-end.")])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6bdce5b8", module.exports)
+  }
+}
 
 /***/ }),
-/* 8 */
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "container col-12 py-2 navstyle",
+    attrs: {
+      "align": "center"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": "/",
+      "title": "Home"
+    }
+  }, [_c('h1', [_vm._v("Blame Tally")])]), _vm._v(" "), _c('div', {
+    staticClass: "seperator"
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6e19cb5f", module.exports)
+  }
+}
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -11301,7 +11577,7 @@ if (false) {
 }
 
 /***/ }),
-/* 9 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13587,10 +13863,10 @@ if (inBrowser && window.Vue) {
 
 /* harmony default export */ __webpack_exports__["a"] = (VueRouter);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 10 */
+/* 19 */
 /***/ (function(module, exports) {
 
 var g;
@@ -13617,302 +13893,10 @@ module.exports = g;
 
 
 /***/ }),
-/* 11 */
+/* 20 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(7)(
-  /* script */
-  __webpack_require__(13),
-  /* template */
-  __webpack_require__(14),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/home/sj/git/Blame-Tally/src/components/footer.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] footer.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6130b12c", Component.options)
-  } else {
-    hotAPI.reload("data-v-6130b12c", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('footer', {
-    staticClass: "footer",
-    attrs: {
-      "align": "center"
-    }
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/about",
-      "title": "About this tool",
-      "alt": "About",
-      "activeClass": "active"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-info-circle fa-2x"
-  })])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "#",
-      "title": "View the repository on Github",
-      "alt": "GitHub Repository Link"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-github fa-2x"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "#",
-      "title": "Connect with the author",
-      "alt": "Connect author"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-linkedin-square fa-2x"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "#",
-      "title": "Contact the author",
-      "alt": "Contact author"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-envelope-square fa-2x"
-  })])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6130b12c", module.exports)
-  }
-}
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(7)(
-  /* script */
-  __webpack_require__(16),
-  /* template */
-  __webpack_require__(17),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/home/sj/git/Blame-Tally/src/components/navbar.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] navbar.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6e19cb5f", Component.options)
-  } else {
-    hotAPI.reload("data-v-6e19cb5f", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "container col-12 py-2 navstyle",
-    attrs: {
-      "align": "center"
-    }
-  }, [_c('router-link', {
-    attrs: {
-      "to": "/",
-      "title": "Home"
-    }
-  }, [_c('h1', [_vm._v("Blame Tally")])]), _vm._v(" "), _c('div', {
-    staticClass: "seperator"
-  })], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6e19cb5f", module.exports)
-  }
-}
-
-/***/ }),
-/* 18 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(7)(
-  /* script */
-  __webpack_require__(18),
-  /* template */
-  __webpack_require__(20),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/home/sj/git/Blame-Tally/src/pages/about.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] about.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6bdce5b8", Component.options)
-  } else {
-    hotAPI.reload("data-v-6bdce5b8", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "container col-sm-5 mt-4 ml-4",
-    attrs: {
-      "align": "left"
-    }
-  }, [_c('h4', [_vm._v("Hello there!")]), _vm._v(" "), _c('p', [_vm._v("As you've no doubt already been on the landing page of this tool, you probably already know what this is about. This nifty little tool is an "), _c('strong', [_vm._v("offline")]), _vm._v(" Tally Management tool, effectively allowing you to manage your Blame Tallies (or any other kind of Tally) with handy JSON files and a neat GUI.")]), _vm._v(" "), _c('h5', [_vm._v("What are Blame Tallies?")]), _vm._v(" "), _c('p', [_c('a', {
-    attrs: {
-      "href": "https://en.wikipedia.org/wiki/Tally_marks",
-      "alt": "Wiki Article"
-    }
-  }, [_vm._v("This")]), _vm._v(" is an article about Tally Marks on Wikipedia. That should explain things pretty well. You're a developer anyway, you should know this stuff.")]), _vm._v(" "), _c('h5', [_vm._v("How do I use this tool?")]), _vm._v(" "), _c('p', [_vm._v("It's pretty straight forward. I mean, look at the GUI. I didn't even make the usual mess, so you should really be able to figure this stuff out on your own.")]), _vm._v(" "), _c('p', [_vm._v("If you're too lazy to do that, here's a rundown:\n\t\t\t"), _c('ul', [_c('li', [_vm._v("Add a Tally, selecting the type and other content as specified")]), _vm._v(" "), _c('li', [_vm._v("Modify the Tally by clicking the right button. A new window opens up.")]), _vm._v(" "), _c('li', [_vm._v("Remove the Tally altogether because you're unhappy. Contemplate life.")])]), _vm._v("\n\t\tAlternatively, you can easily modify all Tallies as well as Users in the respective JSON files stored in the back end.")])]), _vm._v(" "), _c('div', {
-    staticClass: "container col-sm-5 mt-4 mr-4",
-    attrs: {
-      "align": "right"
-    }
-  }, [_c('h5', [_vm._v("What is this written in?")]), _vm._v(" "), _c('p', [_vm._v("The front-end is written entirely (well, almost) with Vue.js, using multiple components wherever possible. This allows for completely modular development, switching out stuff as needed, as well as making my life a thousand times easier if something happens to break.")]), _vm._v(" "), _c('p', [_vm._v("The back-end is written in NodeJS, and I use JSON for storage. The reason I use JSON for storage (and not a big, clunky database) is because it's not a big, clunky database, this tool is offline, and using a big, clunky database is a pain. Only drawback is, now everybody can easily modify their tallies if they're smart enough.")]), _vm._v(" "), _c('h5', [_vm._v("Missed anything?")]), _vm._v(" "), _c('p', [_vm._v("The usual stuff: If you want to change something, you can fork the repository and edit things to your heart's content. If you feel like screaming at me, shoot me an e-mail. Also, connect with me on LinkedIn. I heard that's "), _c('em', [_vm._v("super important")]), _vm._v(" in today's age. Other than that, have fun and blame your friends for everything.")])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6bdce5b8", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);
