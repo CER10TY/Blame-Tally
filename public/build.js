@@ -11463,9 +11463,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     attrs: {
-      "href": "#",
+      "href": "https://github.com/CER10TY/Blame-Tally",
       "title": "View the repository on Github",
-      "alt": "GitHub Repository Link"
+      "alt": "GitHub Repository Link",
+      "target": "_blank"
     }
   }, [_c('i', {
     staticClass: "fa fa-github fa-2x"
@@ -11473,19 +11474,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     attrs: {
-      "href": "#",
-      "title": "Connect with the author",
-      "alt": "Connect author"
+      "href": "https://johanson-net.me",
+      "title": "Visit the (unfinished) webpage of the author",
+      "alt": "Author webpage",
+      "target": "_blank"
     }
   }, [_c('i', {
-    staticClass: "fa fa-linkedin-square fa-2x"
+    staticClass: "fa fa-globe fa-2x"
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     attrs: {
-      "href": "#",
+      "href": "mailto:soren@johanson-net.me?Subject=Blame%20Tally",
       "title": "Contact the author",
-      "alt": "Contact author"
+      "alt": "Contact author",
+      "target": "_top"
     }
   }, [_c('i', {
     staticClass: "fa fa-envelope-square fa-2x"
